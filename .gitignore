@@ -2,8 +2,13 @@
 
 # dependencies
 node_modules
+jspm_packages
 /.pnp
 .pnp.js
+
+# Lock files for dependency tree
+/package-lock.json
+/yarn.lock
 
 # testing
 /coverage
@@ -25,3 +30,6 @@ yarn-error.log*
 
 /.idea
 .vscode
+
+# Serverless directories
+.serverless
