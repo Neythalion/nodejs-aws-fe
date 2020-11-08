@@ -50,8 +50,8 @@ const Form = (props: FormikProps<FormikValues>) => {
         <Grid item xs={12}>
           <Field
             component={TextField}
-            name="description"
-            label="Description"
+            name="genre"
+            label="Genre"
             fullWidth
             autoComplete="off"
             multiline
