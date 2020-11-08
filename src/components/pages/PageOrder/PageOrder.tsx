@@ -4,7 +4,7 @@ import axios from 'axios';
 import {useParams} from 'react-router-dom';
 import PaperLayout from "components/PaperLayout/PaperLayout";
 import Typography from "@material-ui/core/Typography";
-import API_PATHS from "constants/apiPaths";
+import API_PATHS, { PRODUCTS_API_PATHS } from "constants/apiPaths";
 import {CartItem} from "models/CartItem";
 import {Product} from "models/Product";
 import ReviewOrder from "components/pages/PageCart/components/ReviewOrder";
@@ -115,7 +115,7 @@ export default function PageOrder() {
       return;
     }
     const promises: any[] = [
-      axios.get(`${API_PATHS.product}/product`),
+      axios.get(PRODUCTS_API_PATHS.getProducts),
       axios.get(`${API_PATHS.order}/order/${id}`)
     ];
     Promise.all(promises)
