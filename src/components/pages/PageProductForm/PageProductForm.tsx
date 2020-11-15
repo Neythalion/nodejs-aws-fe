@@ -8,7 +8,7 @@ import axios from 'axios';
 import {useHistory, useParams} from 'react-router-dom';
 import PaperLayout from "components/PaperLayout/PaperLayout";
 import Typography from "@material-ui/core/Typography";
-import API_PATHS from "constants/apiPaths";
+import { PRODUCTS_API_PATHS } from "constants/apiPaths";
 
 const Form = (props: FormikProps<FormikValues>) => {
   const {
@@ -109,7 +109,7 @@ export default function PageProductForm() {
   const onSubmit = (values: FormikValues) => {
     const formattedValues = ProductSchema.cast(values);
     const productToSave = id ? {...ProductSchema.cast(formattedValues), id} : formattedValues;
-    axios.put(`${API_PATHS.bff}/product`, productToSave)
+    axios.post(PRODUCTS_API_PATHS.addProduct, productToSave)
       .then(() => history.push('/admin/products'));
   };
 
@@ -118,7 +118,7 @@ export default function PageProductForm() {
       setIsLoading(false);
       return;
     }
-    axios.get(`${API_PATHS.bff}/product/${id}`)
+    axios.get(`${PRODUCTS_API_PATHS.getProductById}/${id}`)
       .then(res => {
         setProduct(res.data);
         setIsLoading(false);
